@@ -1,5 +1,5 @@
 import PostCard from './PostCard';
-import { Post } from '../types/data';
+import { Post } from '../interfaces/data';
 import { Row, Col } from 'antd';
 
 const PostList = ({ posts }: { posts: Post[] }) => (

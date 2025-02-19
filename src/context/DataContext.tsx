@@ -1,5 +1,5 @@
 import React, { createContext, useContext, useState, ReactNode } from 'react';
-import { Post } from '../types/data';
+import { Post } from '../interfaces/data';
 
 interface DataContextType {
   posts: Post[];

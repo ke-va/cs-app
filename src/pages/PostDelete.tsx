@@ -1,15 +1,14 @@
 import React from 'react';
-import { createPost } from '../api/jsonPlaceHolder';
-import { Button, Form, Input } from 'antd';
+import { deletePost } from '../api/jsonPlaceHolder';
+import { Button, Form, InputNumber } from 'antd';
 import type { FormProps } from 'antd';
 
 type FieldType = {
-  title: string;
-  body: string;
+  id: number;
 };
 
 const onFinish: FormProps<FieldType>['onFinish'] = async (values) => {
-  const res = await createPost('posts', { title: values!.title, body: values!.body });
+  const res = await deletePost('posts', values!.id);
   console.log(res);
 };
 
@@ -17,7 +16,7 @@ const onFinishFailed: FormProps<FieldType>['onFinishFailed'] = (errorInfo) => {
   console.log('Failed:', errorInfo);
 };
 
-const PostCreate: React.FC = () => (
+const PostDelete: React.FC = () => (
   <Form
     name="basic"
     labelCol={{ span: 8 }}
@@ -29,19 +28,11 @@ const PostCreate: React.FC = () => (
     autoComplete="off"
   >
     <Form.Item<FieldType>
-      label="Title"
-      name="title"
-      rules={[{ required: true, message: 'Please input your title!' }]}
+      label="Id"
+      name="id"
+      rules={[{ required: true, message: 'Please input your post id!' }]}
     >
-      <Input />
-    </Form.Item>
-
-    <Form.Item<FieldType>
-      label="Body"
-      name="body"
-      rules={[{ required: true, message: 'Please input your body message!' }]}
-    >
-      <Input />
+      <InputNumber style={{ width: '100%' }} />
     </Form.Item>
 
     <Form.Item label={null}>
@@ -52,4 +43,4 @@ const PostCreate: React.FC = () => (
   </Form>
 );
 
-export default PostCreate;
+export default PostDelete;

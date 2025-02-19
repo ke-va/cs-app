@@ -1,17 +1,17 @@
 import { useState, useEffect } from 'react';
 import { fetchComments, fetchPosts } from '../api/jsonPlaceHolder';
-import { Comments, Post } from '../types/data';
+import { Comment, Post } from '../interfaces/data';
 
 export const useFetchPost = (endpoint: string) => {
   const [post, setPost] = useState<Post>();
-  const [comment, setComment] = useState<Comments[]>();
-  const [loading1, setLoading1] = useState(true);
+  const [comment, setComment] = useState<Comment[]>();
+  const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
     const getData = async () => {
       try {
-        setLoading1(true);
+        setLoading(true);
         const posts = await fetchPosts(endpoint);
         setPost(posts);
         const result = await fetchComments(endpoint);
@@ -19,11 +19,11 @@ export const useFetchPost = (endpoint: string) => {
       } catch (err) {
         setError((err as Error).message);
       } finally {
-        setLoading1(false);
+        setLoading(false);
       }
     };
     getData();
   }, [endpoint]);
 
-  return { post, comment, loading1, error };
+  return { post, comment, loading, error };
 };

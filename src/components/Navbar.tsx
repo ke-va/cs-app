@@ -8,7 +8,7 @@ const headerStyle: React.CSSProperties = {
   textAlign: 'center',
   color: '#fff',
   height: 64,
-  paddingInline: 48,
+  padding: 0,
   lineHeight: '64px',
   backgroundColor: '#4096ff',
 };
@@ -20,7 +20,7 @@ const layoutStyle: React.CSSProperties = {
 
 const linkStyle: React.CSSProperties = {
   color: '#fff',
-  fontSize: '1.25rem',
+  fontSize: '1.1rem',
   fontWeight: 'bold',
   marginRight: 16,
 }
@@ -29,9 +29,10 @@ const Navbar = () => (
   <Flex gap="middle" wrap>
     <Layout style={layoutStyle}>
       <Header style={headerStyle}>
-        <nav className="p-4 bg-blue-600 text-white flex justify-between">
-          <Link style={linkStyle} to="/list" className="text-xl font-bold responsive-link">Posts list</Link>
-          <Link style={linkStyle} to="/create" className="text-xl font-bold responsive-link">Create post</Link>
+        <nav>
+          <Link style={linkStyle} to="/list" className="responsive-link">Posts list</Link>
+          <Link style={linkStyle} to="/create" className="responsive-link">Create post</Link>
+          <Link style={linkStyle} to="/delete" className="responsive-link">Delete post</Link>
         </nav>
       </Header>
     </Layout>

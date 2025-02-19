@@ -14,7 +14,15 @@ export const createPost = async (endpoint: string, data: { title: string; body: 
   });
 
   if (!res.ok) throw new Error('Failed to create post');
-  // console.log(await res.json())
+  return await res.json();
+}
+
+export const deletePost = async (endpoint: string, id: number) => {
+  const res = await fetch(`${BASE_URL}/${endpoint}/${id}`, {
+    method: 'DELETE',
+  });
+
+  if (!res.ok) throw new Error('Failed to delete post');
   return await res.json();
 }
 

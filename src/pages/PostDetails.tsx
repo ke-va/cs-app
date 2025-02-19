@@ -4,9 +4,9 @@ import { Card, Col, Row } from 'antd';
 
 const PostDetails = () => {
   const { id } = useParams();
-  const { post, comment, loading1 } = useFetchPost(`posts/${id}`);
+  const { post, comment, loading } = useFetchPost(`posts/${id}`);
 
-  if (loading1) return <p>Loading...</p>;
+  if (loading) return <p>Loading...</p>;
 
   return (
     <div>
