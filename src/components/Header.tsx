@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom';
 import { Flex, Layout } from 'antd';
 
-const { Header, Footer, Sider, Content } = Layout;
+const { Header } = Layout;
 
 const headerStyle: React.CSSProperties = {
   textAlign: 'center',
