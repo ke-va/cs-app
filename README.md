@@ -77,7 +77,7 @@ Follow these steps to build and run the Docker container:
     docker ps
   ```
 
-5. **Stop the Container**
+4. **Stop the Container**
   ```sh
     docker stop <container_id_or_name>
   ```
