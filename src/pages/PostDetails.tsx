@@ -11,7 +11,7 @@ const PostDetails = () => {
   return (
     <div>
       <Row gutter={16}>
-        <Col span={12}>
+        <Col span={12} xs={24}>
           <Card title={post?.title}>
             <p>{post?.body}</p>
               {comment!.map((c) => (
