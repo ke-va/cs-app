@@ -20,9 +20,8 @@ const onFinishFailed: FormProps<FieldType>['onFinishFailed'] = (errorInfo) => {
 const PostCreate: React.FC = () => (
   <Form
     name="basic"
-    labelCol={{ span: 8 }}
     wrapperCol={{ span: 16 }}
-    style={{ maxWidth: 600 }}
+    style={{ maxWidth: 600, margin: '16px auto', textAlign: 'center' }}
     initialValues={{ remember: true }}
     onFinish={onFinish}
     onFinishFailed={onFinishFailed}
