@@ -2,7 +2,6 @@
 
 Project is written in [TypeScript](https://www.typescriptlang.org/) and built with [React](https://react.dev/) framework.
 
-
 **Table of Contents**
 
 - [CS](#cs)
