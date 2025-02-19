@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom';
 import { Flex, Layout } from 'antd';
+import './Header.css'
 
 const { Header } = Layout;
 
@@ -29,8 +30,8 @@ const Navbar = () => (
     <Layout style={layoutStyle}>
       <Header style={headerStyle}>
         <nav className="p-4 bg-blue-600 text-white flex justify-between">
-          <Link style={linkStyle} to="/list" className="text-xl font-bold">Posts list</Link>
-          <Link style={linkStyle} to="/create" className="text-xl font-bold">Create post</Link>
+          <Link style={linkStyle} to="/list" className="text-xl font-bold responsive-link">Posts list</Link>
+          <Link style={linkStyle} to="/create" className="text-xl font-bold responsive-link">Create post</Link>
         </nav>
       </Header>
     </Layout>

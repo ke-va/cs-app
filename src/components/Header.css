@@ -1,0 +1,5 @@
+.responsive-link {
+  @media (max-width: 768px) {
+   margin-right: 8px !important;
+  }
+}
