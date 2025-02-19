@@ -1,61 +1,55 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { createPost } from '../api/jsonPlaceHolder';
+import { Button, Form, Input } from 'antd';
+import type { FormProps } from 'antd';
 
-const PostCreate: React.FC = () => {
-  const [title, setTitle] = useState('');
-  const [body, setBody] = useState('');
-  const [errors, setErrors] = useState<{ title?: string; content?: string }>({});
-
-  const validate = () => {
-    const newErrors: { title?: string; content?: string } = {};
-    if (!title) newErrors.title = 'Title is required';
-    if (!body) newErrors.content = 'Body is required';
-    return newErrors;
-  };
-
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    const validationErrors = validate();
-    if (Object.keys(validationErrors).length > 0) {
-      setErrors(validationErrors);
-    } else {
-      // Submit form
-      const res = await createPost('posts', { title, body });
-      console.log(res)
-      // Reset form
-      setTitle('');
-      setBody('');
-      setErrors({});
-    }
-  };
-
-  return (
-    <div>
-      <h1>Create Post</h1>
-      <form onSubmit={handleSubmit}>
-        <div>
-          <label htmlFor="title">Title</label>
-          <input
-            type="text"
-            id="title"
-            value={title}
-            onChange={(e) => setTitle(e.target.value)}
-          />
-          {errors.title && <span style={{ color: 'red' }}>{errors.title}</span>}
-        </div>
-        <div>
-          <label htmlFor="content">Body</label>
-          <textarea
-            id="content"
-            value={body}
-            onChange={(e) => setBody(e.target.value)}
-          />
-          {errors.content && <span style={{ color: 'red' }}>{errors.content}</span>}
-        </div>
-        <button type="submit">Create Post</button>
-      </form>
-    </div>
-  );
+type FieldType = {
+  title: string;
+  body: string;
 };
+
+const onFinish: FormProps<FieldType>['onFinish'] = async (values) => {
+  const res = await createPost('posts', { title: values!.title, body: values!.body });
+  console.log('res', res)
+};
+
+const onFinishFailed: FormProps<FieldType>['onFinishFailed'] = (errorInfo) => {
+  console.log('Failed:', errorInfo);
+};
+
+const PostCreate: React.FC = () => (
+  <Form
+    name="basic"
+    labelCol={{ span: 8 }}
+    wrapperCol={{ span: 16 }}
+    style={{ maxWidth: 600 }}
+    initialValues={{ remember: true }}
+    onFinish={onFinish}
+    onFinishFailed={onFinishFailed}
+    autoComplete="off"
+  >
+    <Form.Item<FieldType>
+      label="Title"
+      name="title"
+      rules={[{ required: true, message: 'Please input your title!' }]}
+    >
+      <Input />
+    </Form.Item>
+
+    <Form.Item<FieldType>
+      label="Body"
+      name="body"
+      rules={[{ required: true, message: 'Please input your body message!' }]}
+    >
+      <Input />
+    </Form.Item>
+
+    <Form.Item label={null}>
+      <Button type="primary" htmlType="submit">
+        Submit
+      </Button>
+    </Form.Item>
+  </Form>
+);
 
 export default PostCreate;
