@@ -39,6 +39,32 @@ Instead, it will copy all the configuration files and the transitive dependencie
 
 You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
 
+# React Application Deployment with Docker
+
+This guide will help you build and deploy your React application using Docker and Nginx.
+
+## Prerequisites
+
+- Docker installed on your machine
+- Basic knowledge of Docker commands
+
+## Dockerfile Explanation
+
+The provided `Dockerfile` consists of two stages:
+
+1. **Build Stage**: Uses a Node.js image to build the React application.
+2. **Serve Stage**: Uses an Nginx image to serve the built application.
+
+## Building and Running the Docker Container
+
+Follow these steps to build and run the Docker container:
+
+1. **Build the Docker Image**:
+
+   ```sh
+   docker build -t react-app .
+   ```
+
 ## Learn More
 
 You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
